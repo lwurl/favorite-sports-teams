@@ -6,12 +6,9 @@ body{
     text-align: center;
 }
 
-
 li{
     list-style: none;
     transition: background-color 1.5s ease;
-    /* width: 50%;
-    align-content: center; */
 }
 
 li:nth-of-type(even){
