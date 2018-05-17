@@ -1,6 +1,6 @@
 const app = {
     init(selectors) {
-        this.flicks = []
+        this.teams = []
         this.max = 0
         this.list = document.querySelector(selectors.listSelector)
         this.template = document.querySelector(selectors.templateSelector)
@@ -12,31 +12,31 @@ const app = {
             })
     },
 
-    renderListItem(flick) {
+    renderListItem(team) {
         const item = this.template.cloneNode(true)
         item.classList.remove('template')
-        item.dataset.id = flick.id
+        item.dataset.id = team.id
         item
-            .querySelector('.flickName')
-            .textContent = flick.name
+            .querySelector('.teamName')
+            .textContent = team.name
         return item
     },
 
     handleSubmit(ev) {
         const f = ev.target
-        const flick = {
+        const team = {
             id: ++this.max,
-            name: f.flickName.value,
+            name: f.teamName.value,
         }
-        this.flicks.unshift(flick)
-        const item = this.renderListItem(flick)
+        this.teams.unshift(team)
+        const item = this.renderListItem(team)
         this.list.insertBefore(item, this.list.firstElementChild)
         f.reset()
     },
 }
 
 app.init({
-    formSelector: '#flickForm',
-    listSelector: '#flickList',
-    templateSelector: '.flick.template',
+    formSelector: '#teamForm',
+    listSelector: '#teamList',
+    templateSelector: '.team.template',
 })

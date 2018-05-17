@@ -3,24 +3,24 @@
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Tatum Tots</title>
+  <title>Favorite Teams</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/css/foundation.min.css">
   <link rel="stylesheet" type="text/css" media="screen" href="index.css" />
 </head>
 <body>
   <header>
-    <h1>Tatum Tots</h1>
+    <h1>Favorite Teams</h1>
   </header>
 
   <main>
-    <form id="flickForm">
+    <form id="teamForm">
       <div class="input-group">
         <input
           type="text"
           class="input-group-field"
-          placeholder="Name a flick"
-          name="flickName"
+          placeholder="Name a team"
+          name="teamName"
           autofocus
           required
         >
@@ -29,15 +29,15 @@
             class="button success"
             type="submit"
           >
-            Add flick
+            Add team
           </button>
         </div>
       </div>
     </form>
 
-    <ul id="flickList" class="no-bullet">
-      <li class="template flick grid-x align-middle">
-        <span class="flickName cell auto"></span>
+    <ul id="teamList" class="no-bullet">
+      <li class="template team grid-x align-middle">
+        <span class="teamName cell auto"></span>
         <span class="actions cell shrink">
           <button class="button warning">fav</button>
           <button class="button alert">del</button>
