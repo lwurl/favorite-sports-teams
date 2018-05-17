@@ -1,33 +1,42 @@
-const form = document.querySelector('form')
-//let teams = document.querySelectorAll('li')
-let teamsList = []
+const app = {
+    init(selectors) {
+        this.flicks = []
+        this.max = 0
+        this.list = document.querySelector(selectors.listSelector)
+        this.template = document.querySelector(selectors.templateSelector)
+        document
+            .querySelector(selectors.formSelector)
+            .addEventListener('submit', ev => {
+                ev.preventDefault()
+                this.handleSubmit(ev)
+            })
+    },
 
-const createListElement = function(data){
-    const element = document.createElement('li')
-    element.textContent = data
-    element.addEventListener('click', handleClick)
-    return element
+    renderListItem(flick) {
+        const item = this.template.cloneNode(true)
+        item.classList.remove('template')
+        item.dataset.id = flick.id
+        item
+            .querySelector('.flickName')
+            .textContent = flick.name
+        return item
+    },
+
+    handleSubmit(ev) {
+        const f = ev.target
+        const flick = {
+            id: ++this.max,
+            name: f.flickName.value,
+        }
+        this.flicks.unshift(flick)
+        const item = this.renderListItem(flick)
+        this.list.insertBefore(item, this.list.firstElementChild)
+        f.reset()
+    },
 }
 
-const handleClick = function(ev){
-    const parent = ev.target.parentElement
-    parent.removeChild(ev.target)
-    var index = teamsList.indexOf(ev.target.textContent)
-    if (index !== -1)
-        teamsList.splice(index, 1)
-}
-
-const handleSubmit = function(event){
-    event.preventDefault()
-    const f = event.target
-    const teamName = f.teamName.value
-    const list = document.querySelector('#teams')
-    list.appendChild(createListElement(teamName))
-    teamsList.push(teamName)
-    teams = document.querySelectorAll('li')
-
-    f.reset()
-    f.teamName.focus()
-}
-
-form.addEventListener('submit', handleSubmit)
+app.init({
+    formSelector: '#flickForm',
+    listSelector: '#flickList',
+    templateSelector: '.flick.template',
+})

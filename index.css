@@ -35,3 +35,21 @@ div{
 h3{
     margin-top: -10px;
 } */
+
+main {
+    width: 80%;
+    background-color: whitesmoke;
+    margin: 1rem auto;
+  }
+  
+  .actions .button {
+    margin-bottom: 0;
+  }
+  
+  .flickName {
+    margin: 0 0.75rem;
+  }
+  
+  .template {
+    display: none;
+  }
