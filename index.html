@@ -5,27 +5,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Favorite Sports Teams</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script src="index.js"></script>
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
     <h1>Favorite Sports Teams</h1>
-    <h2>Please enter information below about your favorite teams</h2>
+    <h2>Please enter one of your favorite teams</h2>
 
     <form id="teamForm">
         <p>
             <label for="teamName">Team Name</label>
-            <input type="text" name="teamName">
-        </p>
-
-        <p>
-            <label for="league">League</label>
-            <input type="text" name="league">
+            <input type="text" name="teamName" autofocus>
         </p>
 
         <button type="submit">Add</button>
     </form>
 
+    <br>
+
     <div id="teams"></div>
+
+
+    <script src="index.js"></script>
 </body>
 </html>

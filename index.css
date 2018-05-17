@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css?family=PT+Serif');
+
+body{
+    font-family: 'PT Serif', serif;
+    background-color: #dcdcdc;
+    text-align: center;
+}
+
+li:hover{
+    color: red;
+}
+
+li{
+    list-style: none;
+}
