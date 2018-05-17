@@ -19,6 +19,9 @@ const app = {
         item
             .querySelector('.teamName')
             .textContent = team.name
+        item
+            .querySelector('.deleteButton')
+            .addEventListener('click', this.handleDelete.bind(this))
         return item
     },
 
@@ -28,10 +31,19 @@ const app = {
             id: ++this.max,
             name: f.teamName.value,
         }
+        //debugger
         this.teams.unshift(team)
         const item = this.renderListItem(team)
         this.list.insertBefore(item, this.list.firstElementChild)
         f.reset()
+    },
+
+    handleDelete(ev){
+        // Delete from screen
+        const item = ev.target.parentNode.parentNode.parentNode
+        item.parentNode.removeChild(item)
+        // Delete from list
+        this.teams = this.teams.filter(team => team.id != item.dataset.id)
     },
 }
 

@@ -17,3 +17,7 @@ main {
 .template {
     display: none;
 }
+
+.button-group{
+    margin: 0rem auto;
+}
