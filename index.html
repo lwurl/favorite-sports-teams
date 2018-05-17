@@ -1,32 +1,42 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Favorite Sports Teams</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/js/foundation.min.js">
-    <link rel="stylesheet" href="index.css">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Tatum Tots</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/css/foundation.min.css">
+  <link rel="stylesheet" type="text/css" media="screen" href="index.css" />
 </head>
 <body>
-    <h1>Favorite Sports Teams</h1>
-    <h2>Please enter one of your favorite teams</h2>
+  <header>
+    <h1>Tatum Tots</h1>
+  </header>
 
-    <form id="teamForm">
-        <p>
-            <label for="teamName">Team Name</label>
-            <input type="text" name="teamName" autofocus>
-        </p>
-
-        <button type="submit">Add</button>
+  <main>
+    <form id="flickForm">
+      <div class="input-group">
+        <input
+          type="text"
+          class="input-group-field"
+          placeholder="Name a flick"
+          name="flickName"
+          autofocus
+          required
+        >
+        <div class="input-group-button">
+          <button
+            class="button"
+            type="submit"
+          >
+            Add flick
+          </button>
+        </div>
+      </div>
     </form>
+    <ul id="flickList"></ul>
+  </main>
 
-    <br>
-    <h3>Favorite Teams</h3>
-
-    <div id="teams"></div>
-
-
-    <script src="index2.js"></script>
+  <script src="index2.js"></script>
 </body>
 </html>
