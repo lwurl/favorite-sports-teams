@@ -6,10 +6,35 @@ body{
     text-align: center;
 }
 
-li:hover{
-    color: red;
-}
 
 li{
     list-style: none;
+    transition: background-color 1.5s ease;
+    /* width: 50%;
+    align-content: center; */
+}
+
+li:nth-of-type(even){
+    background-color: whitesmoke;
+}
+
+li:nth-of-type(odd){
+    background-color: white;
+}
+
+li:hover{
+    background-color: #f82f2f;
+    color: white;
+}
+
+div{
+    border: 2px solid black;
+    width: 50%;
+    align-content: center;
+    text-align: center;
+    display: inline-block;
+}
+
+h3{
+    margin-top: -10px;
 }
