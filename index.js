@@ -22,6 +22,9 @@ const app = {
         item
             .querySelector('.deleteButton')
             .addEventListener('click', this.handleDelete.bind(this))
+        item
+            .querySelector('.favoriteButton')
+            .addEventListener('click', this.handleFavorite.bind(this))
         return item
     },
 
@@ -30,6 +33,7 @@ const app = {
         const team = {
             id: ++this.max,
             name: f.teamName.value,
+            fav: false,
         }
         //debugger
         this.teams.unshift(team)
@@ -44,6 +48,21 @@ const app = {
         item.parentNode.removeChild(item)
         // Delete from list
         this.teams = this.teams.filter(team => team.id != item.dataset.id)
+    },
+
+    handleFavorite(ev){
+        const item = ev.target.parentNode.parentNode.parentNode
+        const index = this.teams.findIndex(function(team){
+            return team.id == item.dataset.id
+        })
+        if (!this.teams[index].fav){
+            item.style.backgroundColor = "#ffae00";
+            this.teams[index].fav = true;
+        }
+        else{
+            item.style.backgroundColor = "#f5f5f5";
+            this.teams[index].fav = false;
+        }
     },
 }
 
