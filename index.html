@@ -21,7 +21,7 @@
             <div class="input-group">
                 <input type="text" class="input-group-field" placeholder="Name a team" name="teamName" autofocus required>
                 <div class="input-group-button">
-                    <button class="button success" type="submit">
+                    <button class="button secondary" type="submit">
                         Add team
                     </button>
                 </div>
@@ -30,9 +30,10 @@
 
         <ul id="teamList" class="no-bullet">
             <li class="template team grid-x align-middle">
-                <span class="teamName cell auto"></span>
+                <span class="teamName cell auto" contenteditable="false"></span>
                 <span class="actions cell shrink">
                     <div class="button-group">
+                        <a class="button success editButton fas fa-pencil-alt"></a>
                         <a class="button upButton fas fa-arrow-up"></a>
                         <a class="button downButton fas fa-arrow-down"></a>
                         <a class="button warning favoriteButton far fa-star"></a>

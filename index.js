@@ -20,6 +20,9 @@ const app = {
             .querySelector('.teamName')
             .textContent = team.name
         item
+            .querySelector('.editButton')
+            .addEventListener('click', this.handleEdit.bind(this))
+        item
             .querySelector('.deleteButton')
             .addEventListener('click', this.handleDelete.bind(this))
         item
@@ -110,6 +113,15 @@ const app = {
         this.teams[index] = this.teams[nextIndex]
         this.teams[nextIndex] = currListItem
     },
+
+    handleEdit(ev){
+        const toEdit = ev.target.parentNode.parentNode.parentNode.querySelector('.teamName')
+        debugger
+        if (toEdit.getAttribute('contenteditable') == 'false')
+            toEdit.setAttribute('contenteditable', true)
+        else
+            toEdit.setAttribute('contenteditable', false)
+    }
 }
 
 app.init({
