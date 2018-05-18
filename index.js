@@ -116,7 +116,6 @@ const app = {
 
     handleEdit(ev){
         const toEdit = ev.target.parentNode.parentNode.parentNode.querySelector('.teamName')
-        debugger
         if (toEdit.getAttribute('contenteditable') == 'false')
             toEdit.setAttribute('contenteditable', true)
         else
