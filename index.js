@@ -25,6 +25,9 @@ const app = {
         item
             .querySelector('.favoriteButton')
             .addEventListener('click', this.handleFavorite.bind(this))
+        item
+            .querySelector('.upButton')
+            .addEventListener('click', this.handleArrowUp.bind(this))
         return item
     },
 
@@ -63,6 +66,26 @@ const app = {
             item.style.backgroundColor = "#f5f5f5";
             this.teams[index].fav = false;
         }
+    },
+
+    handleArrowUp(ev){
+        const item = ev.target.parentNode.parentNode.parentNode
+        const prevItem = item.previousSibling
+        const index = this.teams.findIndex(function(team){
+            return team.id == item.dataset.id
+        })
+        if (index == 0)
+            return
+        const prevIndex = this.teams.findIndex(function(team){
+            return team.id == prevItem.dataset.id
+        })
+        // Swap DOM's
+        item.parentNode.removeChild(item)
+        prevItem.parentNode.insertBefore(item, prevItem)
+        // Swap in array
+        const currListItem = this.teams[index]
+        this.teams[index] = this.teams[prevIndex]
+        this.teams[prevIndex] = currListItem
     },
 }
 
