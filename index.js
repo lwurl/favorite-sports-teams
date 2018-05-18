@@ -28,6 +28,9 @@ const app = {
         item
             .querySelector('.upButton')
             .addEventListener('click', this.handleArrowUp.bind(this))
+        item
+            .querySelector('.downButton')
+            .addEventListener('click', this.handleArrowDown.bind(this))
         return item
     },
 
@@ -86,6 +89,26 @@ const app = {
         const currListItem = this.teams[index]
         this.teams[index] = this.teams[prevIndex]
         this.teams[prevIndex] = currListItem
+    },
+
+    handleArrowDown(ev){
+        const item = ev.target.parentNode.parentNode.parentNode
+        const nextItem = item.nextSibling
+        const index = this.teams.findIndex(function(team){
+            return team.id == item.dataset.id
+        })
+        if (index == this.teams.length - 1)
+            return
+        const nextIndex = this.teams.findIndex(function(team){
+            return team.id == nextItem.dataset.id
+        })
+        // Swap DOM's
+        item.parentNode.removeChild(nextItem)
+        item.parentNode.insertBefore(nextItem, item)
+        // Swap in array
+        const currListItem = this.teams[index]
+        this.teams[index] = this.teams[nextIndex]
+        this.teams[nextIndex] = currListItem
     },
 }
 
