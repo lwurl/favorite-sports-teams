@@ -21,7 +21,7 @@ class App {
             .textContent = team.name
         item
             .querySelector('.editButton')
-            .addEventListener('click', this.handleEdit.bind(this))
+            .addEventListener('click', this.handleEdit.bind(this, team))
         item
             .querySelector('.deleteButton')
             .addEventListener('click', this.handleDelete.bind(this))
@@ -114,12 +114,16 @@ class App {
         this.teams[nextIndex] = currListItem
     }
 
-    handleEdit(ev) {
+    handleEdit(team, ev) {
         const toEdit = ev.target.parentNode.parentNode.parentNode.querySelector('.teamName')
-        if (toEdit.getAttribute('contenteditable') == 'false')
+        if (toEdit.getAttribute('contenteditable') == 'false'){
             toEdit.setAttribute('contenteditable', true)
-        else
+            toEdit.focus()
+        }
+        else{
+            team.name = toEdit.textContent
             toEdit.setAttribute('contenteditable', false)
+        }
     }
 }
 
