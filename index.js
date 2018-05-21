@@ -1,5 +1,5 @@
-const app = {
-    init(selectors) {
+class App {
+    constructor(selectors) {
         this.teams = []
         this.max = 0
         this.list = document.querySelector(selectors.listSelector)
@@ -10,7 +10,7 @@ const app = {
                 ev.preventDefault()
                 this.handleSubmit(ev)
             })
-    },
+    }
 
     renderListItem(team) {
         const item = this.template.cloneNode(true)
@@ -35,7 +35,7 @@ const app = {
             .querySelector('.downButton')
             .addEventListener('click', this.handleArrowDown.bind(this))
         return item
-    },
+    }
 
     handleSubmit(ev) {
         const f = ev.target
@@ -49,40 +49,40 @@ const app = {
         const item = this.renderListItem(team)
         this.list.insertBefore(item, this.list.firstElementChild)
         f.reset()
-    },
+    }
 
-    handleDelete(ev){
+    handleDelete(ev) {
         // Delete from screen
         const item = ev.target.parentNode.parentNode.parentNode
         item.parentNode.removeChild(item)
         // Delete from list
         this.teams = this.teams.filter(team => team.id != item.dataset.id)
-    },
+    }
 
-    handleFavorite(ev){
+    handleFavorite(ev) {
         const item = ev.target.parentNode.parentNode.parentNode
-        const index = this.teams.findIndex(function(team){
+        const index = this.teams.findIndex(function (team) {
             return team.id == item.dataset.id
         })
-        if (!this.teams[index].fav){
+        if (!this.teams[index].fav) {
             item.style.backgroundColor = "#ffae00";
             this.teams[index].fav = true;
         }
-        else{
+        else {
             item.style.backgroundColor = "#f5f5f5";
             this.teams[index].fav = false;
         }
-    },
+    }
 
-    handleArrowUp(ev){
+    handleArrowUp(ev) {
         const item = ev.target.parentNode.parentNode.parentNode
         const prevItem = item.previousSibling
-        const index = this.teams.findIndex(function(team){
+        const index = this.teams.findIndex(function (team) {
             return team.id == item.dataset.id
         })
         if (index == 0)
             return
-        const prevIndex = this.teams.findIndex(function(team){
+        const prevIndex = this.teams.findIndex(function (team) {
             return team.id == prevItem.dataset.id
         })
         // Swap DOM's
@@ -92,17 +92,17 @@ const app = {
         const currListItem = this.teams[index]
         this.teams[index] = this.teams[prevIndex]
         this.teams[prevIndex] = currListItem
-    },
+    }
 
-    handleArrowDown(ev){
+    handleArrowDown(ev) {
         const item = ev.target.parentNode.parentNode.parentNode
         const nextItem = item.nextSibling
-        const index = this.teams.findIndex(function(team){
+        const index = this.teams.findIndex(function (team) {
             return team.id == item.dataset.id
         })
         if (index == this.teams.length - 1)
             return
-        const nextIndex = this.teams.findIndex(function(team){
+        const nextIndex = this.teams.findIndex(function (team) {
             return team.id == nextItem.dataset.id
         })
         // Swap DOM's
@@ -112,9 +112,9 @@ const app = {
         const currListItem = this.teams[index]
         this.teams[index] = this.teams[nextIndex]
         this.teams[nextIndex] = currListItem
-    },
+    }
 
-    handleEdit(ev){
+    handleEdit(ev) {
         const toEdit = ev.target.parentNode.parentNode.parentNode.querySelector('.teamName')
         if (toEdit.getAttribute('contenteditable') == 'false')
             toEdit.setAttribute('contenteditable', true)
@@ -123,7 +123,7 @@ const app = {
     }
 }
 
-app.init({
+const app = new App({
     formSelector: '#teamForm',
     listSelector: '#teamList',
     templateSelector: '.team.template',
