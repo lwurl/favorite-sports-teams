@@ -21,3 +21,8 @@ main {
 .button-group{
     margin: 0rem auto;
 }
+
+.team{
+    border-style: solid;
+    border-width: 1px;
+}
